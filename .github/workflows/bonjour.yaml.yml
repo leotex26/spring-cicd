@@ -1,6 +1,6 @@
-name: tp
+name: bonjour
 
-run-name: tp
+run-name: bonjour
 
 on:
   push:
