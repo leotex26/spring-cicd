@@ -1,6 +1,6 @@
-name: Exemple Bonjour
+name: tp
 
-run-name: Exemple Bonjour
+run-name: tp
 
 on:
   workflow_dispatch:
@@ -19,18 +19,18 @@ jobs:
   
   
   afficher-version:
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Installer Java 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
 
       - name: Afficher la version de Java
         run: java --version
 
       - name: Afficher la version de Maven
         run: mvn --version
-    runs-on: ubuntu-latest
+
+      - name: Afficher les fichiers
+        run: ls -la
