@@ -12,5 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
       - name: Afficher Bonjour
         run: echo "Bonjour depuis GitHub Actions !"
+      - name: Lister les fichiers
+        run: ls -la
