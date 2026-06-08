@@ -35,10 +35,7 @@ jobs:
         run: mvn clean verify -Dspring.profiles.active=test
 
       - name: Analyser
-        uses: github/codeql-action/analyze@v3
-
-      - name: Construire avec Maven
-        run: mvn -B clean verify -Dspring.profiles.active=test
+        uses: github/codeql-action/analyze@v4
 
       - name: Sauvegarder le rapport JaCoCo
         uses: actions/upload-artifact@v4
