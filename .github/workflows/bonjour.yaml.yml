@@ -3,9 +3,7 @@ name: Exemple Bonjour
 run-name: Exemple Bonjour
 
 on:
-  push:
-    branches:
-      - "main"
+  workflow_dispatch:
 
 jobs:
   dire-bonjour:
@@ -18,3 +16,21 @@ jobs:
         run: echo "Bonjour depuis GitHub Actions !"
       - name: Lister les fichiers
         run: ls -la
+  
+  
+  afficher-version:
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installer Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Afficher la version de Java
+        run: java --version
+
+      - name: Afficher la version de Maven
+        run: mvn --version
+    runs-on: ubuntu-latest
