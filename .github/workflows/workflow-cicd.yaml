@@ -5,9 +5,7 @@ permissions:
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   analyze:
@@ -34,7 +32,16 @@ jobs:
           java-version: '21'
 
       - name: Build Maven
-        run: mvn clean package
+        run: mvn clean verify -Dspring.profiles.active=test
 
       - name: Analyser
         uses: github/codeql-action/analyze@v3
+
+      - name: Construire avec Maven
+        run: mvn -B clean verify -Dspring.profiles.active=test
+
+      - name: Sauvegarder le rapport JaCoCo
+        uses: actions/upload-artifact@v4
+        with:
+         name: jacoco-report
+         path: target/site/jacoco
