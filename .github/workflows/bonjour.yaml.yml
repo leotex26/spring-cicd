@@ -3,7 +3,8 @@ name: tp
 run-name: tp
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   dire-bonjour:
@@ -12,19 +13,26 @@ jobs:
     steps:
       - name: Récupérer le dépôt
         uses: actions/checkout@v4
+
       - name: Afficher Bonjour
         run: echo "Bonjour depuis GitHub Actions !"
+
       - name: Lister les fichiers
         run: ls -la
-  
-  
-  afficher-version:
 
+  afficher-version:
     runs-on: ubuntu-latest
 
     steps:
       - name: Récupérer le code
         uses: actions/checkout@v4
+
+      - name: Installer Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
 
       - name: Afficher la version de Java
         run: java --version
