@@ -50,4 +50,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: checkstyle-report
-          path: target/site/checkstyle.html
+          path: target/site
+
+      - name: Publier le rapport SpotBugs
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-spotbugs
+          path: target/spotbugs/
