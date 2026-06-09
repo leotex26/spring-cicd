@@ -42,3 +42,12 @@ jobs:
         with:
          name: jacoco-report
          path: target/site/jacoco
+
+      - name: Générer le site Maven
+        run: mvn site
+
+      - name: Sauvegarder le rapport Checkstyle
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkstyle-report
+          path: target/site/checkstyle.html

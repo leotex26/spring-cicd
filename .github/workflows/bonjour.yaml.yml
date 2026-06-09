@@ -3,8 +3,7 @@ name: bonjour
 run-name: bonjour
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   dire-bonjour:
